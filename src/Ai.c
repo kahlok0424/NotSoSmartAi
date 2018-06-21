@@ -22,6 +22,13 @@ int stringCompare(char *str1, char *str2){
 
   lengthOfStr1 = getStringLength(str1);
   lengthOfStr2 = getStringLength(str2);
+  char test[3] = "MoS, Lol";
+  char ans[3];
+  for(int i = 0;i <3 ;i++){
+      ans[i] = tolower(test[i]);
+  }
+
+  printf("bafwew : %s",ans);
 
   if(lengthOfStr1 != lengthOfStr2){
     return 0;
@@ -31,6 +38,7 @@ int stringCompare(char *str1, char *str2){
     {
       //str1[i] = tolower(str1[i]);
       //str2[i] = tolower(str2[i]);
+
       if(str1[i] != str2[i]){
         return 0;
       }

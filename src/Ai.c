@@ -72,8 +72,9 @@ char *speakToAi(char *mesg){
   if(stringCompare(mesg ,"hi" ) || stringCompare(mesg ,"hello" ) || stringCompare(mesg ,"hey" ) ){
     return greetingmsg;
   }
-  else if{
-    
+  else
+  {
+
   }
-  return NULL;
+  return "Error input message detected!";
 }

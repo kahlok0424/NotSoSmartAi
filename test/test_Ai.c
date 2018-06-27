@@ -34,6 +34,15 @@ void test_Ai_StringCompare_Given_SameLength_and_Different1_expect_0(void)
     TEST_ASSERT_EQUAL(0 ,stringCompare("SameLength","Different1"));
 }
 
+void test_speakToAi_Given_Semething_expect_Error_input_message_detected(void)
+{
+  char *expectedReply = "Error input message detected!";
+  char *reply = speakToAi("something");
+
+  //TEST_ASSERT_EQUAL(getStringLength(expectedReply),getStringLength(reply));
+  TEST_ASSERT_EQUAL_STRING(expectedReply, reply);
+}
+
 void test_speakToAi_Given_hi_expect_hi_There_My_name_is_AiMachine_What_is_yours(void)
 {
   char *expectedReply = "Hi,There! My name is AiMachine. What is yours?";
@@ -63,7 +72,7 @@ void test_speakToAi_Given_hello_expect_hi_There_My_name_is_AiMachine_What_is_you
 
 void test_speakToAi_Given_Hello_expect_hi_There_My_name_is_AiMachine_What_is_yours(void)
 {
-  char *expectedReply = "Hi,There! My name is AiMachine. What is yours?";
+  char *expectedReply= "Hi,There! My name is AiMachine. What is yours?";
   char *reply = speakToAi("Hello");
 
   TEST_ASSERT_EQUAL(getStringLength(expectedReply),getStringLength(reply));
@@ -85,5 +94,13 @@ void test_speakToAi_Given_Hey_expect_hi_There_My_name_is_AiMachine_What_is_yours
   char *reply = speakToAi("Hey");
 
   TEST_ASSERT_EQUAL(getStringLength(expectedReply),getStringLength(reply));
+  TEST_ASSERT_EQUAL_STRING(expectedReply, reply);
+}
+
+void test_speakToAi_Given_My_name_is_Kevin_expect_Nice_to_meet_you_Kevin(void)
+{
+  char *expectedReply = "Nice to meet you, Kevin";
+  char *reply = speakToAi("My name is Kevin");
+
   TEST_ASSERT_EQUAL_STRING(expectedReply, reply);
 }

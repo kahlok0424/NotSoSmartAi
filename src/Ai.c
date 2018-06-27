@@ -60,21 +60,49 @@ int stringCompare(char *str1, char *str2){
   return 1;
 }
 
-char *extractName(char *name){
+char *extractName(char *str){
+  int lengthOfName = 0;
+  char *startofName;
+  char *name;
+  startofName = strstr(str,"is");
+  name = (char*)malloc(strlen(startofName)+1);
+  lengthOfName = getStringLength(startofName);
 
+  for(int i = 0 ; i < (lengthOfName -3); i++ ){
+    name[i] = startofName[i+3];
+  }
+  name[0] = toupper(name[0]);
+  return name;
 }
 
 char *speakToAi(char *mesg){
 
   char *greetingmsg ="Hi,There! My name is AiMachine. What is yours?";
+  char *replymsg = "Nice to meet you, ";
+  char *byemessage = "Goodbye. Have a nice day!";
+  char *name;
+  char *combinedmsg;
+  //message2 = malloc(22);
   mesg = convertToLowerCase(mesg);
 
   if(stringCompare(mesg ,"hi" ) || stringCompare(mesg ,"hello" ) || stringCompare(mesg ,"hey" ) ){
     return greetingmsg;
   }
+  else if( (strstr(mesg , "name") != NULL))
+  {
+    name = extractName(mesg);
+    combinedmsg = (char*)malloc(strlen(byemessage)+strlen(name)+1);
+    strcpy(combinedmsg , replymsg);
+    strcat(combinedmsg , name);
+    //printf("la:%s",combinedmsg);
+    return combinedmsg;
+  }
+  else if (stringCompare(mesg,"bye") || stringCompare(mesg,"goodbye")){
+    return byemessage;
+}
   else
   {
-
+    return "Error input message detected!";
   }
-  return "Error input message detected!";
+
 }
